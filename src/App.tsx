@@ -4,14 +4,12 @@ import ExpenseTracker from "./pages/expense-tracker/ExpenseTracker";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route path="/expense-tracker" element={<ExpenseTracker />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="/expense-tracker" element={<ExpenseTracker />} />
+      </Routes>
+    </Router>
   );
 }
 
