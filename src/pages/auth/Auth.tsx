@@ -18,7 +18,7 @@ function Auth() {
   };
 
   return (
-    <div className="">
+    <div className="flex w-full h-full">
       <p>Sign in With Google to Continue</p>
       <button className="" onClick={signInWithGoogle}>
         {" "}
