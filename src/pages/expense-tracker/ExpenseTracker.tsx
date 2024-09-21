@@ -1,10 +1,17 @@
 import { useState, useMemo } from "react";
 import { useAddTransaction } from "../../hooks/useAddTransaction";
-import { useGetTransactions } from "../../hooks/usegetTransactions";
+import { useGetTransactions } from "../../hooks/useGetTransactions";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 import { useNavigate } from "react-router-dom";
+
+interface Transaction {
+  description: string;
+  transactionAmount: number;
+  transactionType: string;
+  id: string;
+}
 
 function ExpenseTracker() {
   const { addTransaction } = useAddTransaction();
@@ -38,7 +45,7 @@ function ExpenseTracker() {
   const calculateTotal = (type: string) => {
     let total = 0;
 
-    transactions.forEach((transaction) => {
+    transactions.forEach((transaction: Transaction) => {
       if (transaction.transactionType === type) {
         total += transaction.transactionAmount;
       }
@@ -118,7 +125,7 @@ function ExpenseTracker() {
       <section>
         <h3>Transactions</h3>
         <ul>
-          {transactions.map((transaction) => {
+          {transactions.map((transaction: Transaction) => {
             const { description, transactionAmount, transactionType } =
               transaction;
             return (
