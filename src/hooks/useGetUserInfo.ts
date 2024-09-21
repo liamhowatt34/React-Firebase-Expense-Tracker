@@ -7,6 +7,7 @@ export const useGetUserInfo = () => {
 
     return { name, profilePhoto, userID, isAuth };
   } else {
-    // Handle the case where auth is null (e.g., user is not authenticated)
+    console.error("User is not authenticated");
+    return {};
   }
 };
