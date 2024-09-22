@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Auth from "./pages/auth/Auth";
-import ExpenseTracker from "./pages/expense-tracker/ExpenseTracker";
+import Auth from "./pages/Auth";
+import ExpenseTracker from "./pages/ExpenseTracker";
 
 function App() {
   return (

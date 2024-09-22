@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
-import { useAddTransaction } from "../../hooks/useAddTransaction";
-import { useGetTransactions } from "../../hooks/useGetTransactions";
-import { useGetUserInfo } from "../../hooks/useGetUserInfo";
+import { useAddTransaction } from "../hooks/useAddTransaction";
+import { useGetTransactions } from "../hooks/useGetTransactions";
+import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { signOut } from "firebase/auth";
-import { auth } from "../../config/firebase-config";
+import { auth } from "../config/firebase-config";
 import { useNavigate } from "react-router-dom";
 
 interface Transaction {

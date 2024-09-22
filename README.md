@@ -1,50 +1,90 @@
-# React + TypeScript + Vite
+# Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a simple web-based expense tracking application. It allows users to sign in using Google authentication, add income and expense transactions, and view their total balance, income, and expenses. The application uses Firebase for authentication and Firestore for storing transactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Google Authentication**: Users can sign in with their Google account.
+- **Add Transactions**: Users can add income and expense transactions with a description and amount.
+- **View Balance**: Users can view their total balance, income, and expenses.
+- **Transaction List**: A list of all added transactions is displayed for easy tracking.
+- **Sign Out**: Users can sign out, which clears their session.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## File Structure
 
-- Configure the top-level `parserOptions` property like this:
+- **`App.tsx`**: Handles user authentication via Google Sign-In using Firebase.
+- **`ExpenseTracker.tsx`**: Main component for managing and displaying transactions.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Components
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### `App.tsx` - Authentication
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This component manages user authentication using Firebase. Once the user is authenticated via Google, their session is stored in `localStorage`, and they are navigated to the expense tracker page.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+#### Key Functions:
+
+- **`signInWithGoogle`**: Signs in the user with Google, stores their information, and navigates to the expense tracker.
+- **Conditional Rendering**: If the user is already authenticated, they are automatically redirected to the expense tracker.
+
+### `ExpenseTracker.tsx` - Expense Tracker
+
+This is the main component where users can add, view, and calculate their transactions.
+
+#### Key Features:
+
+- **Transaction Form**: Users can add a new transaction (either income or expense) by filling out a form with a description, amount, and transaction type.
+- **Transaction List**: Displays all added transactions with their description, amount, and type.
+- **Balance Calculation**: The component calculates and displays the user's total balance, income, and expenses using the `useMemo` hook for performance optimization.
+- **Sign Out**: Users can sign out, which clears the session and returns them to the login page.
+
+#### Key Functions:
+
+- **`addTransaction`**: Adds a new transaction to the list.
+- **`calculateTotal`**: Calculates the total income, expense, and balance based on the transactions.
+- **`signUserOut`**: Signs the user out, clears the local storage, and navigates back to the authentication page.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/expense-tracker.git
+   cd expense-tracker
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up Firebase:
+
+   - Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
+   - Set up Firebase Authentication (Google sign-in).
+   - Create Firestore for transaction storage.
+   - Copy your Firebase config into `src/firebaseConfig.ts`.
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the app in your browser:
+   ```bash
+   http://localhost:3000
+   ```
+
+## Dependencies
+
+- React
+- Firebase (Authentication and Firestore)
+- React Router
+- TailwindCSS
+
+## License
+
+This project is licensed under the MIT License.
