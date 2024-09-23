@@ -62,15 +62,24 @@ function ExpenseTracker() {
 
   return (
     <div className="flex p-12 h-screen">
-      <section className="flex flex-col justify-between items-start w-1/2 h-2/3 border-2 border-red-500">
-        <div className="flex w-full justify-between p-4">
+      <section className="flex flex-col justify-between items-start w-1/2 h-full p-8 bg-slate-800 text-slate-50 rounded-sm m-4">
+        <div className="flex w-full justify-between items-center font-bold">
           {profilePhoto && (
             <div>
-              <img src={profilePhoto} alt="profile photo" />
+              <img
+                src={profilePhoto}
+                className="rounded-full"
+                alt="profile photo"
+              />
             </div>
           )}
-          <h1>{name}'s Expense Tracker</h1>
-          <button onClick={signUserOut}>Sign Out</button>
+          <h1 className="text-3xl mb-2">{name}'s Expense Tracker</h1>
+          <button
+            onClick={signUserOut}
+            className="flex justify-center items-center border border-slate-50 h-12 w-auto rounded-full p-4 hover:bg-slate-50 hover:text-slate-600"
+          >
+            Sign Out
+          </button>
         </div>
         <div>
           <h3>Your Balance</h3>
@@ -122,8 +131,8 @@ function ExpenseTracker() {
           <button type="submit">Add Transaction</button>
         </form>
       </section>
-      <section>
-        <h3>Transactions</h3>
+      <section className="h-full w-1/2 m-4 bg-slate-800 text-slate-50 flex flex-col items-center font-bold p-4">
+        <h3 className="text-4xl mb-8">Transactions</h3>
         <ul>
           {transactions.map((transaction: Transaction) => {
             const { description, transactionAmount, transactionType } =
