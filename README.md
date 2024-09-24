@@ -1,5 +1,9 @@
 # Expense Tracker
 
+## Live Demo
+
+You can view the live app here: [Live Site](https://expense-tracker-5e943.web.app)
+
 ## Overview
 
 This project is a simple web-based expense tracking application. It allows users to sign in using Google authentication, add income and expense transactions, and view their total balance, income, and expenses. The application uses Firebase for authentication and Firestore for storing transactions.
