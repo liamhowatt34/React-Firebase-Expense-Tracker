@@ -25,7 +25,7 @@ function Auth() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-cyan-600 to-indigo-500">
-      <div className="flex flex-col w-1/3 h-80 justify-around items-center font-bold border border-azure rounded mb-60 shadow-xl bg-slate-700">
+      <div className="flex flex-col w-1/3 h-80 justify-around items-center font-bold border border-slate-50 rounded mb-60 bg-slate-800 shadow-lg shadow-black">
         <p className="text-4xl font-bold text-slate-50">
           Expense Tracker - Sign In
         </p>

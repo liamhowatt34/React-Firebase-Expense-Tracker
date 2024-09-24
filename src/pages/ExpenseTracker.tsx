@@ -63,7 +63,7 @@ function ExpenseTracker() {
   return (
     <div className="flex p-12 h-screen bg-gradient-to-r from-cyan-600 to-indigo-500">
       <section className="flex flex-col justify-center items-start w-1/2 h-full p-10 bg-slate-800 text-slate-50 rounded-sm mr-4 shadow-xl shadow-black rounded-r-lg">
-        <div className="flex w-full justify-between items-center font-bold mb-28">
+        <div className="flex w-full justify-between items-center font-bold mb-20">
           {profilePhoto && (
             <div>
               <img
@@ -81,12 +81,12 @@ function ExpenseTracker() {
             Sign Out
           </button>
         </div>
-        <div className="mb-12">
-          <h3 className="font-bold text-3xl underline mb-1">Balance</h3>
+        <div className="mb-16">
+          <h3 className="font-bold text-4xl underline mb-1">Balance</h3>
           {totalBalance >= 0 ? (
-            <h2 className="font-bold text-3xl">${totalBalance}</h2>
+            <h2 className="font-bold text-4xl">${totalBalance}</h2>
           ) : (
-            <h2 className="font-bold text-3xl">-${totalBalance * -1}</h2>
+            <h2 className="font-bold text-4xl">-${totalBalance * -1}</h2>
           )}
         </div>
         <div className="font-bold text-xl flex w-1/4 justify-around items-center mb-20">
@@ -127,7 +127,9 @@ function ExpenseTracker() {
               onChange={(e) => setTransactionType(e.target.value)}
               className="m-2"
             />
-            <label htmlFor="expense">Expense</label>
+            <label htmlFor="expense" className="text-lg">
+              Expense
+            </label>
           </div>
           <div className="flex w-20 justify-around items-center">
             <input
@@ -136,20 +138,23 @@ function ExpenseTracker() {
               value="income"
               checked={transactionType === "income"}
               onChange={(e) => setTransactionType(e.target.value)}
+              className="m-2"
             />
-            <label htmlFor="income">Income</label>
+            <label htmlFor="income" className="text-lg">
+              Income
+            </label>
           </div>
           <button
             type="submit"
-            className="flex justify-center items-center font-bold  border border-slate-50 h-12 w-auto rounded-full p-4 hover:bg-slate-50 hover:text-slate-600"
+            className="flex justify-center items-center font-bold  border border-slate-50 h-14 w-auto rounded-full p-4 hover:bg-slate-50 hover:text-slate-600"
           >
             Add Transaction
           </button>
         </form>
       </section>
       <section className="h-full w-1/2 ml-4 bg-slate-800 text-slate-50 flex flex-col items-start font-bold p-12 shadow-xl shadow-black rounded-l-lg">
-        <h3 className="text-4xl mb-8 mt-4 underline">Transactions</h3>
-        <ul className="overflow-auto border border-slate-50 h-3/4 w-1/2 p-4 rounded-sm">
+        <h3 className="text-5xl mb-10 mt-4 underline">Transactions</h3>
+        <ul className="overflow-auto border border-slate-50 h-3/4 w-2/3 p-4 rounded-sm">
           {transactions.map((transaction: Transaction) => {
             const { description, transactionAmount, transactionType } =
               transaction;
