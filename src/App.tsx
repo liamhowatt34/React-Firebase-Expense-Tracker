@@ -4,12 +4,15 @@ import ExpenseTracker from "./pages/ExpenseTracker";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Auth />} />
-        <Route path="/expense-tracker" element={<ExpenseTracker />} />
-      </Routes>
-    </Router>
+    <>
+      console.log(import.meta.env.VITE_FIREBASE_API_KEY);
+      <Router>
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route path="/expense-tracker" element={<ExpenseTracker />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
