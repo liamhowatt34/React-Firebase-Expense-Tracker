@@ -5,7 +5,6 @@ import ExpenseTracker from "./pages/ExpenseTracker";
 function App() {
   return (
     <>
-      console.log(import.meta.env.VITE_FIREBASE_API_KEY);
       <Router>
         <Routes>
           <Route path="/" element={<Auth />} />
