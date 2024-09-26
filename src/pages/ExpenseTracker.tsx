@@ -61,9 +61,9 @@ function ExpenseTracker() {
   const totalExpense = useMemo(() => calculateTotal("expense"), [transactions]);
 
   return (
-    <div className="flex p-12 h-screen bg-gradient-to-r from-cyan-600 to-indigo-500">
-      <section className="flex flex-col justify-center items-start w-1/2 h-full p-10 bg-slate-800 text-slate-50 rounded-sm mr-4 shadow-xl shadow-black rounded-r-lg">
-        <div className="flex w-full justify-between items-center font-bold mb-20">
+    <div className="flex flex-col lg:flex-row items-center p-12 lg:h-screen h-auto bg-gradient-to-r from-cyan-600 to-indigo-500">
+      <section className="flex flex-col justify-center items-start lg:w-1/2 w-full h-full lg:p-10 p-8 bg-slate-800 text-slate-50 rounded-sm lg:mr-4 m-8 shadow-xl shadow-black rounded-r-lg">
+        <div className="flex w-full justify-between items-center font-bold lg:mb-20 mb-10">
           {profilePhoto && (
             <div>
               <img
@@ -73,7 +73,9 @@ function ExpenseTracker() {
               />
             </div>
           )}
-          <h1 className="text-4xl mb-2 underline">{name}'s Expense Tracker</h1>
+          <h1 className="xl:text-4xl lg:text-3xl md:text-2xl text-lg mr-4 ml-4 underline">
+            {name}'s Expense Tracker
+          </h1>
           <button
             onClick={signUserOut}
             className="flex justify-center items-center border border-slate-50 h-12 w-auto rounded-full p-4 hover:bg-slate-50 hover:text-slate-600"
@@ -81,17 +83,23 @@ function ExpenseTracker() {
             Sign Out
           </button>
         </div>
-        <div className="mb-16">
-          <h3 className="font-bold text-4xl underline mb-1">Balance</h3>
+        <div className="xl:mb-16 mb-8">
+          <h3 className="font-bold xl:text-4xl lg:text-3xl text-lg underline">
+            Balance
+          </h3>
           {totalBalance >= 0 ? (
-            <h2 className="font-bold text-4xl">${totalBalance}</h2>
+            <h2 className="font-bold xl:text-4xl lg:text-3xl text-lg">
+              ${totalBalance}
+            </h2>
           ) : (
-            <h2 className="font-bold text-4xl">-${totalBalance * -1}</h2>
+            <h2 className="font-bold xl:text-4xl lg:text-3xl text-lg">
+              -${totalBalance * -1}
+            </h2>
           )}
         </div>
-        <div className="font-bold text-xl flex w-1/4 justify-around items-center mb-20">
+        <div className="font-bold text-lg md:text-xl text-md flex md:w-1/4 w-1/3 justify-around items-center lg:mb-20 lg:m-1 ml-6 mb-6">
           <div>
-            <h4 className="mr-12 underline">Income</h4>
+            <h4 className="xl:mr-12 mr-2 underline">Income</h4>
             <p>${totalIncome}</p>
           </div>
           <div>
@@ -101,7 +109,7 @@ function ExpenseTracker() {
         </div>
         <form
           action=""
-          className="flex flex-col justify-between items-start h-1/2 w-1/2 mb-2"
+          className="flex flex-col lg:justify-between justify-around items-start h-1/2 lg:w-1/2 w-3/4 mb-2"
           onSubmit={onSubmit}
         >
           <input
@@ -109,7 +117,7 @@ function ExpenseTracker() {
             placeholder="Description"
             required
             onChange={(e) => setDescription(e.target.value)}
-            className="h-10 rounded-md p-2 text-slate-800 w-full"
+            className="h-10 rounded-md p-2 text-slate-800 w-full mb-2"
           />
           <input
             type="number"
@@ -152,9 +160,11 @@ function ExpenseTracker() {
           </button>
         </form>
       </section>
-      <section className="h-full w-1/2 ml-4 bg-slate-800 text-slate-50 flex flex-col items-start font-bold p-12 shadow-xl shadow-black rounded-l-lg">
-        <h3 className="text-5xl mb-10 mt-4 underline">Transactions</h3>
-        <ul className="overflow-auto border border-slate-50 h-3/4 w-2/3 p-4 rounded-sm">
+      <section className="h-full lg:w-1/2 w-full ml-4 bg-slate-800 text-slate-50 flex flex-col items-start font-bold p-12 shadow-xl shadow-black rounded-l-lg">
+        <h3 className="xl:text-5xl text-3xl mb-10 mt-4 underline">
+          Transactions
+        </h3>
+        <ul className="overflow-auto border border-slate-50 h-3/4 lg:w-2/3 w-full p-4 rounded-sm">
           {transactions.map((transaction: Transaction) => {
             const { description, transactionAmount, transactionType } =
               transaction;
