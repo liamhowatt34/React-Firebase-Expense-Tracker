@@ -62,7 +62,7 @@ function ExpenseTracker() {
 
   return (
     <div className="flex flex-col lg:flex-row items-center p-12 lg:h-screen h-auto bg-gradient-to-r from-cyan-600 to-indigo-500">
-      <section className="flex flex-col justify-center items-start lg:w-1/2 w-full h-full lg:p-10 p-8 bg-slate-800 text-slate-50 rounded-sm lg:mr-4 m-8 shadow-xl shadow-black rounded-r-lg">
+      <section className="flex flex-col justify-center items-baseline lg:w-1/2 w-full h-full lg:p-10 p-8 bg-slate-800 text-slate-50 rounded-sm lg:mr-4 m-8 shadow-xl shadow-black rounded-r-lg">
         <div className="flex w-full justify-between items-center font-bold lg:mb-20 mb-10">
           {profilePhoto && (
             <div>
@@ -97,7 +97,7 @@ function ExpenseTracker() {
             </h2>
           )}
         </div>
-        <div className="font-bold text-lg md:text-xl text-md flex md:w-1/4 w-1/3 justify-around items-center lg:mb-20 lg:m-1 ml-6 mb-6">
+        <div className="font-bold text-lg md:text-xl flex md:w-1/4 w-1/3 justify-between items-center lg:mb-20 lg:m-1 ml-4 mb-6">
           <div>
             <h4 className="xl:mr-12 mr-2 underline">Income</h4>
             <p>${totalIncome}</p>
