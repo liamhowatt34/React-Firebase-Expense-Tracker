@@ -54,12 +54,12 @@ function ExpenseTracker() {
         total += transaction.transactionAmount;
       }
     });
-
-    return total;
+    return parseFloat(total.toFixed(2));
   };
 
   const totalBalance = useMemo(() => {
-    return calculateTotal("income") - calculateTotal("expense");
+    const balance = calculateTotal("income") - calculateTotal("expense");
+    return parseFloat(balance.toFixed(2));
   }, [transactions]);
   const totalIncome = useMemo(() => calculateTotal("income"), [transactions]);
   const totalExpense = useMemo(() => calculateTotal("expense"), [transactions]);
