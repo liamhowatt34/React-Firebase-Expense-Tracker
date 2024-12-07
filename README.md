@@ -13,6 +13,7 @@ This project is a simple web-based expense tracking application. It allows users
 - **Google Authentication**: Users can sign in with their Google account.
 - **Add Transactions**: Users can add income and expense transactions with a description and amount.
 - **View Balance**: Users can view their total balance, income, and expenses.
+- **Delete Transactions**: Users can delete transactions with a button for each transaction in the list.
 - **Transaction List**: A list of all added transactions is displayed for easy tracking.
 - **Sign Out**: Users can sign out, which clears their session.
 
