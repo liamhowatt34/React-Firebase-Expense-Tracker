@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
 import { useAddTransaction } from "../hooks/useAddTransaction";
+import { Timestamp } from "firebase/firestore";
+import { useDeleteTransaction } from "../hooks/useDeleteTransaction";
 import { useGetTransactions } from "../hooks/useGetTransactions";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { signOut } from "firebase/auth";
@@ -10,11 +12,13 @@ interface Transaction {
   description: string;
   transactionAmount: number;
   transactionType: string;
+  datetime?: Timestamp;
   id: string;
 }
 
 function ExpenseTracker() {
   const { addTransaction } = useAddTransaction();
+  const { deleteTransaction } = useDeleteTransaction();
   const { transactions } = useGetTransactions();
   const { name, profilePhoto } = useGetUserInfo();
   const navigate = useNavigate();
@@ -123,6 +127,7 @@ function ExpenseTracker() {
           />
           <input
             type="number"
+            step="0.01"
             placeholder="Amount"
             required
             onChange={(e) => setTransactionAmount(Number(e.target.value))}
@@ -167,28 +172,40 @@ function ExpenseTracker() {
           Transactions
         </h3>
         <ul className="w-full space-y-4 max-h-96 overflow-y-auto">
-          {transactions.map((transaction: Transaction) => (
-            <li
-              key={transaction.id}
-              className="p-4 border border-gray-200 rounded-md"
-            >
-              <h4 className="font-medium text-gray-800">
-                {transaction.description}
-              </h4>
-              <p className="text-sm text-gray-600">
-                ${transaction.transactionAmount} -{" "}
-                <span
-                  className={`${
-                    transaction.transactionType === "income"
-                      ? "text-green-600"
-                      : "text-red-600"
-                  }`}
+          {transactions
+            .slice()
+            .reverse()
+            .map((transaction: Transaction) => (
+              <li
+                key={transaction.id}
+                className="p-4 border border-gray-400 rounded-md"
+              >
+                <h4 className="font-medium text-gray-800">
+                  {transaction.description}
+                </h4>
+                <p className="text-sm text-gray-600">
+                  ${transaction.transactionAmount} -{" "}
+                  <span
+                    className={`${
+                      transaction.transactionType === "income"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                  >
+                    {transaction.transactionType}
+                  </span>
+                </p>
+                <p className="text-xs mb-2 text-gray-500">
+                  {transaction.datetime?.toDate().toLocaleString()}
+                </p>
+                <button
+                  onClick={() => deleteTransaction(transaction.id)}
+                  className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-700 transition"
                 >
-                  {transaction.transactionType}
-                </span>
-              </p>
-            </li>
-          ))}
+                  Delete
+                </button>
+              </li>
+            ))}
         </ul>
       </section>
     </div>
